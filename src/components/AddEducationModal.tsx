@@ -9,9 +9,10 @@ import {
   TextField,
 } from '@material-ui/core';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../store/rootState';
-import { educationActionTypes } from '../store/actionTypes/educationActionTypes';
+import { bookmarksActionTypes } from '../store/actionTypes/bookmarksActionTypes';
+import { bookmarksState } from '../store/reducers/bookmarks.reducer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,12 +48,21 @@ function AddEducationModal() {
   const onModalClose = () => {
     setOpen(false);
   };
+  const bookmarks = useSelector((state: rootState) => state.bmksState.bookmarks);
   const onSave = () => {
-    dispatch({ type: educationActionTypes.SET_QUALIFICATION, payload: qualification });
-    dispatch({ type: educationActionTypes.SET_UNIVERSITY, payload: university });
-    dispatch({ type: educationActionTypes.SET_STARTDATE, payload: startDate });
-    dispatch({ type: educationActionTypes.SET_ENDDATE, payload: endDate });
-    dispatch({ type: educationActionTypes.SET_LEARNINGS, payload: [major, minor, achivements] });
+    dispatch({
+      type: bookmarksActionTypes.SET_BOOKMARK,
+      payload: bookmarks.concat({
+        bookmarkName: university,
+        detail: {
+          qualification,
+          university,
+          startDate,
+          endDate,
+          learnings: [major, minor, achivements],
+        },
+      }),
+    });
     setOpen(false);
   };
   return (

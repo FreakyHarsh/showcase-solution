@@ -1,7 +1,7 @@
-import { educationState } from './reducers/education.reducer';
+import { bookmarksState } from './reducers/bookmarks.reducer';
 import { nameState } from './reducers/name.reducer';
 
 export interface rootState {
   nameState: nameState;
-  educationState: educationState;
+  bmksState: bookmarksState;
 }

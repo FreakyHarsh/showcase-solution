@@ -5,14 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { nameReducer } from './store/reducers/name.reducer';
 import { Provider } from 'react-redux';
-import { educationReducer } from './store/reducers/education.reducer';
+import { bookmarksReducer } from './store/reducers/bookmarks.reducer';
 
 const composeEnhancers =
   (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const rootReducer = combineReducers({
   nameState: nameReducer,
-  educationState: educationReducer,
+  bmksState: bookmarksReducer,
 });
 
 const store = createStore(rootReducer, composeEnhancers());
