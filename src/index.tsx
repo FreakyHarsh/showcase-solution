@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { compose, createStore, combineReducers } from 'redux';
+import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { nameReducer } from './store/reducers/name.reducer';
@@ -9,8 +9,13 @@ import { educationReducer } from './store/reducers/education.reducer';
 
 const composeEnhancers =
   (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-const rootReducer = combineReducers({ nameState: nameReducer, educationState: educationReducer });
-const store = createStore(rootReducer);
+
+const rootReducer = combineReducers({
+  nameState: nameReducer,
+  educationState: educationReducer,
+});
+
+const store = createStore(rootReducer, composeEnhancers());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

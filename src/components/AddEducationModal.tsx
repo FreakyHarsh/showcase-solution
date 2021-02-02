@@ -8,7 +8,11 @@ import {
   Grid,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { rootState } from '../store/rootState';
+import { educationActionTypes } from '../store/actionTypes/educationActionTypes';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     modal: {
@@ -17,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
     },
     paper: {
-      maxWidth: '65%',
+      maxWidth: '70%',
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
@@ -28,16 +32,29 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 function AddEducationModal() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
-
+  const [qualification, setQualification] = useState('');
+  const [university, setUniversity] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [major, setMajor] = useState('');
+  const [minor, setMinor] = useState('');
+  const [achivements, setAchivements] = useState('');
   const onModalOpen = () => {
     setOpen(true);
   };
-
   const onModalClose = () => {
     setOpen(false);
   };
-
+  const onSave = () => {
+    dispatch({ type: educationActionTypes.SET_QUALIFICATION, payload: qualification });
+    dispatch({ type: educationActionTypes.SET_UNIVERSITY, payload: university });
+    dispatch({ type: educationActionTypes.SET_STARTDATE, payload: startDate });
+    dispatch({ type: educationActionTypes.SET_ENDDATE, payload: endDate });
+    dispatch({ type: educationActionTypes.SET_LEARNINGS, payload: [major, minor, achivements] });
+    setOpen(false);
+  };
   return (
     <div>
       <Button variant='contained' color='primary' onClick={onModalOpen}>
@@ -54,10 +71,20 @@ function AddEducationModal() {
           <div className={classes.paper}>
             <Grid container spacing={3}>
               <Grid item xs={6} className={classes.gridCenter}>
-                <TextField label='Qualification' variant='outlined' fullWidth />
+                <TextField
+                  label='Qualification'
+                  variant='outlined'
+                  fullWidth
+                  onChange={(e) => setQualification(e.target.value)}
+                />
               </Grid>
               <Grid item xs={6} className={classes.gridCenter}>
-                <TextField label='University' variant='outlined' fullWidth />
+                <TextField
+                  label='University'
+                  variant='outlined'
+                  fullWidth
+                  onChange={(e) => setUniversity(e.target.value)}
+                />
               </Grid>
               <Grid item xs={6} className={classes.gridCenter}>
                 <TextField
@@ -66,6 +93,9 @@ function AddEducationModal() {
                   type='date'
                   InputLabelProps={{
                     shrink: true,
+                  }}
+                  onChange={(e) => {
+                    setStartDate(e.target.value);
                   }}
                   fullWidth
                 />
@@ -78,20 +108,36 @@ function AddEducationModal() {
                   InputLabelProps={{
                     shrink: true,
                   }}
+                  onChange={(e) => setEndDate(e.target.value)}
                   fullWidth
                 />
               </Grid>
               <Grid item xs={12} className={classes.gridCenter}>
-                <TextField variant='outlined' label='Major' fullWidth />
+                <TextField
+                  variant='outlined'
+                  label='Major'
+                  fullWidth
+                  onChange={(e) => setMajor(e.target.value)}
+                />
               </Grid>
               <Grid item xs={12} className={classes.gridCenter}>
-                <TextField variant='outlined' label='Minor' fullWidth />
+                <TextField
+                  variant='outlined'
+                  label='Minor'
+                  fullWidth
+                  onChange={(e) => setMinor(e.target.value)}
+                />
               </Grid>
               <Grid item xs={12} className={classes.gridCenter}>
-                <TextField variant='outlined' label='Achievements' fullWidth />
+                <TextField
+                  variant='outlined'
+                  label='Achievements'
+                  fullWidth
+                  onChange={(e) => setAchivements(e.target.value)}
+                />
               </Grid>
               <Grid item xs={12} style={{ textAlign: 'end' }}>
-                <Button variant='contained' color='primary'>
+                <Button variant='contained' color='primary' onClick={onSave}>
                   Save
                 </Button>
               </Grid>

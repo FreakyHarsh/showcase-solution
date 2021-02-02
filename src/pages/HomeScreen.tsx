@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { nameActionTypes } from '../store/actionTypes/nameActionTypes';
 import { nameState } from '../store/reducers/name.reducer';
+import { rootState } from '../store/rootState';
 
 const HomeScreen: FC = () => {
   const history = useHistory();
-  const name = useSelector((state: { nameState: nameState }) => state.nameState.name);
+  const name = useSelector((state: rootState) => state.nameState.name);
   const dispatch = useDispatch();
   const [localName, setLocalName] = useState('');
   return (

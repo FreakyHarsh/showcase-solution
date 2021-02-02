@@ -11,7 +11,6 @@ const initialState: nameState = {
 export const nameReducer = (state: nameState = initialState, action: { type: nameActionTypes; payload?: any }) => {
   switch (action.type) {
     case nameActionTypes.SET_NAME:
-      console.log(action)
       return {
         ...state,
         name: action.payload
