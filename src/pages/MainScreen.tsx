@@ -2,7 +2,6 @@ import { Box, Container, makeStyles, Typography } from '@material-ui/core';
 import React, { FC } from 'react';
 import AddEducationModal from '../components/AddEducationModal';
 
-const useStyles = makeStyles({});
 const MainScreen: FC = () => {
   return (
     <Container style={{ textAlign: 'center', paddingTop: '1rem' }}>

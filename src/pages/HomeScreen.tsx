@@ -1,9 +1,15 @@
 import { Box, Button, Grid, TextField, Typography } from '@material-ui/core';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { nameActionTypes } from '../store/actionTypes/nameActionTypes';
+import { nameState } from '../store/reducers/name.reducer';
 
 const HomeScreen: FC = () => {
   const history = useHistory();
+  const name = useSelector((state: { nameState: nameState }) => state.nameState.name);
+  const dispatch = useDispatch();
+  const [localName, setLocalName] = useState('');
   return (
     <Grid
       container
@@ -17,11 +23,23 @@ const HomeScreen: FC = () => {
           Type your name and click "Enter" below to begin!
         </Typography>
         <Box display='flex' flexDirection='column' mt={1}>
-          <TextField label='Enter your Name' variant='outlined' />
-          <Box mt={1} textAlign='center'>
-            <Button variant='contained' color='primary' onClick={() => history.push('main-screen')}>
+          <TextField
+            label='Enter your Name'
+            variant='outlined'
+            onChange={(e) => setLocalName(e.target.value)}
+          />
+          <Box mt={2} textAlign='center'>
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={() => {
+                dispatch({ type: nameActionTypes.SET_NAME, payload: localName });
+                history.push('main-screen');
+              }}
+            >
               Enter
             </Button>
+            {name}
           </Box>
         </Box>
       </Box>

@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
     },
     paper: {
-      maxWidth: '60%',
+      maxWidth: '65%',
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
@@ -82,7 +82,13 @@ function AddEducationModal() {
                 />
               </Grid>
               <Grid item xs={12} className={classes.gridCenter}>
-                <TextField variant='outlined' label='Description' multiline rows={3} fullWidth />
+                <TextField variant='outlined' label='Major' fullWidth />
+              </Grid>
+              <Grid item xs={12} className={classes.gridCenter}>
+                <TextField variant='outlined' label='Minor' fullWidth />
+              </Grid>
+              <Grid item xs={12} className={classes.gridCenter}>
+                <TextField variant='outlined' label='Achievements' fullWidth />
               </Grid>
               <Grid item xs={12} style={{ textAlign: 'end' }}>
                 <Button variant='contained' color='primary'>
