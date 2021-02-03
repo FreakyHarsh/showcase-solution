@@ -13,10 +13,10 @@ function BookmarkDetail() {
   console.log(location);
   useEffect(() => {
     const card = document.querySelector(location.hash);
-    card?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, [location.hash]);
   return (
-    <Box style={{ display: 'relative', overflowY: 'scroll' }} height='200px'>
+    <Box style={{ overflowY: 'scroll' }} height='300px'>
       {bookmarks.map(
         ({
           detail: { qualification, university, startDate, endDate, learnings },

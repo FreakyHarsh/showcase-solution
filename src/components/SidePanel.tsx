@@ -7,7 +7,10 @@ import { useHistory } from 'react-router-dom';
 const useStyle = makeStyles({
   liStyle: {
     padding: '10px',
-    backgroundColor: '#808080',
+    backgroundColor: '#F6F6F6',
+    borderBottom: '1px solid #000',
+    marginBottom: '4px',
+    cursor: 'pointer',
   },
   ulStyle: {
     listStyleType: 'none',

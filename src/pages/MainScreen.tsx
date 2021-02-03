@@ -10,25 +10,20 @@ import BookmarkDetail from '../components/BookmarkDetail';
 
 const MainScreen: FC = () => {
   const name = useSelector((state: rootState) => state.nameState.name);
-  // const useQuery = () => {
-  //   const location = useLocation();
-  //   console.log(location);
-  //   return new URLSearchParams(location.hash);
-  // };
-  // const query = useQuery();
+
   return (
     <Container style={{ textAlign: 'center', paddingTop: '1rem' }}>
       <Typography>Welcome to {name}'s education page</Typography>
       <AddEducationModal />
       <Box display='flex' mt={2}>
-        <Box flexGrow={1} style={{ backgroundColor: 'red' }} maxWidth='30%'>
+        <Box flexGrow={1} maxWidth='30%'>
           <SidePanel />
         </Box>
-        <Box flexGrow={3} style={{ backgroundColor: 'green' }}>
+        <Box flexGrow={3}>
           <BookmarkDetail />
         </Box>
       </Box>
-      <Box height='100vh' style={{ backgroundColor: 'blue' }} />
+      <Box height='100vh' />
       <div id='app'>sdfsdf</div>
     </Container>
   );
