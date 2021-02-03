@@ -10,7 +10,6 @@ function BookmarkDetail() {
   const bookmarks = useSelector((state: rootState) => state.bmksState.bookmarks);
 
   const location = useLocation();
-  console.log(location);
   useEffect(() => {
     const card = document.querySelector(location.hash);
     card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
