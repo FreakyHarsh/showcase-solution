@@ -1,6 +1,6 @@
 import { bookmarksActionTypes } from "../actionTypes/bookmarksActionTypes";
 
-type educationDetailObj = {
+export type educationDetailObj = {
   qualification: string;
   university: string;
   startDate: string;
