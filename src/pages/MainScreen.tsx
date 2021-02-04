@@ -1,8 +1,6 @@
-import { Box, Container, makeStyles, Typography } from '@material-ui/core';
-import { queryAllByAltText } from '@testing-library/react';
+import { Box, Container, Typography } from '@material-ui/core';
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import AddEducationModal from '../components/AddEducationModal';
 import SidePanel from '../components/SidePanel';
 import { rootState } from '../store/rootState';

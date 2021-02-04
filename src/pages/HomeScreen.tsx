@@ -3,7 +3,6 @@ import React, { FC, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { nameActionTypes } from '../store/actionTypes/nameActionTypes';
-import { nameState } from '../store/reducers/name.reducer';
 import { rootState } from '../store/rootState';
 
 const HomeScreen: FC = () => {

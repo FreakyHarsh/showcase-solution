@@ -12,7 +12,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../store/rootState';
 import { bookmarksActionTypes } from '../store/actionTypes/bookmarksActionTypes';
-import { bookmarksState } from '../store/reducers/bookmarks.reducer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
