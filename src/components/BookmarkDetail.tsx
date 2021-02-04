@@ -11,8 +11,10 @@ function BookmarkDetail() {
 
   const location = useLocation();
   useEffect(() => {
-    const card = document.querySelector(location.hash);
-    card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (location.hash) {
+      const card = document.querySelector(location.hash);
+      card?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }, [location.hash]);
   return (
     <Box style={{ overflowY: 'scroll' }} height='300px'>
